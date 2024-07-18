@@ -1,6 +1,5 @@
 from .models import Equipamento
 from .serializers import DesafioSerializer
-from .serializers import EquipamentoSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
