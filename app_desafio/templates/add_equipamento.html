@@ -1,0 +1,142 @@
+{% load static %}
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Equipamento</title>
+</head>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    color: #0097A9;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"],
+button[type="submit"],
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0097A9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+form.detail-form {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    border: 2px solid #0097A9; /* Adiciona uma borda sólida de 2px na cor #0097A9 */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form.detail-form h3 {
+    border-top: 10px;
+    text-align: center;
+    color: #0097A9;
+    margin-bottom: 5px;
+}
+
+form.detail-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #0097A9;
+}
+
+form.detail-form input{
+    width: 60%;
+    padding: 10px;
+}
+textarea.form-control{
+    width: 60%; 
+}
+input[type="submit"], button[type="submit"], .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #bb0e0e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+form.detail-form input[type="submit"] {
+    width: 20%;
+    padding: 10px;
+    background-color: #0097A9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #0097A9;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+
+</style>
+<body>
+    <br>
+    <a href="{% url 'equipamento-list' %}">
+        <img src="https://static.services.arkmeds.com/prod/img/arkmeds/login_logo.png" alt="Logo" class="img">
+    </a>
+    <h3>Adicionar Equipamento</h3>
+    <form action="{% url 'equipamento-add' %}" method="POST" class="detail-form">
+        {% csrf_token %}
+        {% render_form serializer %}
+        <br>
+        <input type="submit" value="Adicionar">
+    </form>
+    <a href="{% url 'equipamento-list' %}">Voltar para a lista</a>
+</body>
+</html>

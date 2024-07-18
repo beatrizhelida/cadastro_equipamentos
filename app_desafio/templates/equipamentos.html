@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipamentos</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+h3 {
+    text-align: center;
+    color: #0097A9;
+    margin-bottom: 20px;
+}
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    width: 80%;
+    max-width: 800px;
+}
+.add-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+.add-button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #0097A9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.add-button:hover {
+    background-color: #0097A9;
+}
+.container ul {
+    list-style-type: none;
+    padding: 0;
+}
+.container li {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.container li a {
+    color: #0097A9;
+    text-decoration: none;
+    font-size: 16px;
+}
+.container li a:hover {
+    text-decoration: underline;
+}
+</style>
+<body>
+    <br>
+    <img src="https://static.services.arkmeds.com/prod/img/arkmeds/login_logo.png" alt="Logo">
+    <h3>Lista de Equipamentos</h3>
+    <div class="container">
+        <div class="add-button-container">
+            <a href="{% url 'equipamento-add' %}" class="add-button">Adicionar Equipamento</a>
+        </div>
+        <ul>
+            {% for equipamento in equipamentos %}
+                <li>
+                    <a href="{% url 'equipamento-detail' equipamento.pk %}">{{ equipamento.tipo }} - {{ equipamento.modelo }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
