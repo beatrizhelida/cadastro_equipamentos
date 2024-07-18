@@ -33,10 +33,10 @@ class EquipamentoCreate(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'add_equipamento.html'
     def get(self, request):
-        serializer = EquipamentoSerializer
+        serializer = DesafioSerializer
         return Response({'serializer': serializer})
     def post(self, request):
-        serializer = EquipamentoSerializer(data=request.data)
+        serializer = DesafioSerializer(data=request.data)
         if not serializer.is_valid():
             return Response({'serializer': serializer})
         serializer.save()
